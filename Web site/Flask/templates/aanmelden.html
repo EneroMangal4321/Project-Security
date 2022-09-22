@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project Security</title>
+        <!-- <link rel="icon" href="static/logo.png" type="image/x-icon"> -->
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    </head>
+    <div class="header"></div>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+        </label>
+
+        <div id="sidebarMenu">
+            <ul class="sidebarMenuInner">
+                <li>Team C <span>Cyber Security</span></li>
+                <li><a href="{{url_for('indexNL')}}" >Home</a></li>
+                <li><a href="{{url_for('overons')}}" >Over ons</a></li>
+                <li><a href="{{url_for('loginNL')}}" >Log in</a></li>
+            </ul>
+        </div>
+        
+
+        <form method="POST" action="/aanmelden">
+            <div class="aanmeld-box">
+            <h1>Aanmelden</h1>
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Gebruikersnaam " name="Susername" value="">
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+            <input type="email" placeholder="E-mail" name="Semail" value="">
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Wachtwoord" name="Spassword1" value="">
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Wachtwoord opnieuw" name="Spassword2" value="">
+            </div>
+            <input class="btn" type="submit" name="submit" value="Aanmelden">
+    
+        </form>
+        
+    </div>
+</html>
+
+

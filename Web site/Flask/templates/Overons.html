@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project Security</title>
+        <!-- <link rel="icon" href="static/logo.png" type="image/x-icon"> -->
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    </head>
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+            <li>Team C <span>Cyber Security</span></li>
+            <li><a href="{{url_for('indexNL')}}" >Home</a></li>
+            <li><a href="{{url_for('overons')}}" >Over ons</a></li>
+            <li><a href="{{url_for('loginNL')}}" >Log in</a></li>
+            <li><a href="{{url_for('logoutNL')}}">Uitloggen</a></li>
+        </ul>
+    </div>
+    <div id='center' class="main center">
+        <div class="mainInner">
+            <div>OVER ONS</div>
+        </div>
+    </div>
+    <div class="mainText div">
+        <div class="mainText">
+            <p></p>
+        </div> 
+    </div>
+</html>
+
+
