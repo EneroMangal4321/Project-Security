@@ -5,11 +5,11 @@ import random
 from flask import Flask, url_for, request, redirect, render_template, session, flash
 import mysql.connector as mysql
 
-PS = mysql.connect(
-    host='192.168.0.5',
-    database='PS',
-    user='website',
-    password='w3bm@st3r')
+db = mysql.connect(
+    host='localhost',
+    database='psdb',
+    user='login',
+    password='*2Sasf@csAas3')
 
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ app.secret_key = "ABC"
 # function to see if the user that has been filled in already exists
 def user_exists(username):
     # open db session
-    cursor = PS.cursor()
+    cursor = db.cursor()
     # see if the user exists in the database
     cursor.execute(f"SELECT username FROM User WHERE username = '%s'" % (username))
     # fetch the result of the above query
@@ -52,7 +52,7 @@ def user_exists(username):
 # function to see if the email that has been filled in already exists  
 def email_exists(email):
     # open db session
-    cursor = PS.cursor()
+    cursor = db.cursor()
     # make the email into a variable
     # email = request.form[f'Lusername']
     cursor.execute(f"SELECT email FROM User WHERE email = '%s'" % (email))
@@ -89,7 +89,7 @@ def make_salt():
 # checks if salt 
 def salt_check(salt):
     # open db session
-    cursor = PS.cursor()
+    cursor = db.cursor()
     # see if the salt is already in the db
     cursor.execute(f"SELECT salt FROM User WHERE salt = '%s'" % (salt))
     fetchresult = cursor.fetchone()
@@ -119,11 +119,11 @@ def encrypt(password, salt):
 # function to add the user to the db
 def add_new_user_to_database(username, email, encrypt_password, salt):
     # open db session
-    cursor = PS.cursor()
+    cursor = db.cursor()
     # add user to DB
     cursor.execute(f"INSERT INTO User (username, email, password, salt) VALUES ('{username}','{email}', '{encrypt_password}', '{salt}');")
     # commit changes
-    PS.commit()
+    db.commit()
     # close db session
     cursor.close()
 
@@ -141,7 +141,7 @@ def indexNL():
 
 @app.route('/login', methods=['GET', 'POST'])
 def loginNL():
-    cursor = PS.cursor()
+    cursor = db.cursor()
     mail_check = '@'
     if request.method == f'POST' :       
         # check if the username filled in is an email or not
