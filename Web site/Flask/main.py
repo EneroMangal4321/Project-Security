@@ -5,15 +5,17 @@ import random
 from flask import Flask, url_for, request, redirect, render_template, session, flash
 import mysql.connector as mysql
 
-db = mysql.connect(
-    host='localhost',
-    database='psdb',
-    user='login',
-    password='*2Sasf@csAas3')
+
 
 
 app = Flask(__name__)
 app.secret_key = "ABC"
+
+db = mysql.connect(
+        host = "localhost",
+        user = "login",      
+        passwd = "2Sasf@csAas3",    
+        database = "psdb")
 
 
 #########################################################################################################################
