@@ -1,13 +1,17 @@
-#!/usr/bin/env python
+#These modules will need to be imported, the modules starting with a dot are local modules.
 
 import hashlib
+import imp
 import random
+import secrets
 from flask import Flask, url_for, request, redirect, render_template, session, flash
 import mysql.connector as mysql
-from .users_module import *
+from users_module import user_login
 
 
 app = Flask(__name__)
+
+#Keeps client-side sessions secure
 app.secret_key = secrets.token_bytes(16)
 
 @app.route("/")
@@ -40,11 +44,11 @@ def loginNL():
             elif status == 1:
                 flash("gebruikersnaam en/of wachtwoord incorrect")
                 audit(input_username[0], 3)
-                return render_template("login.html")
+                return render_template("login-NL.html")
             elif status == 2:
                 flash("gebruikersnaam en/of wachtwoord incorrect")
                 audit(input_username[0], 3)
-                return render_template("login.html")
+                return render_template("login-NL.html")
 
         #display page if not a post request
         else:
