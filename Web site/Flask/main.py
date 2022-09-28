@@ -6,10 +6,7 @@ import random
 import secrets
 from flask import Flask, url_for, request, redirect, render_template, session, flash
 import mysql.connector as mysql
-from users_module import user_login
 
-
-app = Flask(__name__)
 
 #Keeps client-side sessions secure
 app.secret_key = secrets.token_bytes(16)
@@ -21,9 +18,6 @@ def indexNL():
 
 @app.route("/login", methods=['GET', 'POST'])
 def loginNL():
-    #check if user is signed in
-    if 'username' in session:
-        return redirect(url_for('welcome'))
 
     #if user is not signed in let them log in    
     else:
