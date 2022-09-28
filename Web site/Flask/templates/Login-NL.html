@@ -29,18 +29,24 @@
                     <h1>Login</h1>
                 <div class="textbox">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Gebruikersnaam " name="Lusername" value="">
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    
+                    <input type="text" placeholder="Gebruikersnaam " name="username" value="">
                 </div>
 
                 <div class="textbox">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Wachtwoord" name="Lpassword" value="">
+                    <input type="password" placeholder="Wachtwoord" name="password" value="">
                 </div>
                 <input class="btn" type="submit" name="submit" value="Inloggen">
 
-                <a href="{{url_for('aanmelden')}}">
-                    <input class="btn" type="button" name="" value="Maak een account aan">
-                    </a>
             </div>
         </form>
         
