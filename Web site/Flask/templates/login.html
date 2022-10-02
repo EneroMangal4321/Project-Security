@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='dark_theme.css')}}">
+    <title>Login</title>
+</head>
+<body class="body">
+    <header>
+        <div class="navbar">
+            <!-- <a href="{{url_for('welcome')}}"><img id="logo" src="{{ url_for('static', filename='logo_dark_theme.png')}}"></a>
+            <div class="buttons">
+                <a href="{{url_for('aanmelden')}}" id="navbar_button">Aanmelden</a>
+                <a href="{{url_for('login')}}" id="navbar_button">Login</a>
+                <a href="" id="navbar_button">Template button</a>  -->
+            </div>    
+        </div>
+    </header>
+    <main>
+        <div class="signup-page">
+            <div class="singup_box">
+                <div class="signup_header">
+                    <div id="signup_title">
+                        Ben je Admin? log dan in!
+                    </div>
+                </div>
+                <div class="signup_form">
+                    <form class="signup_forms" method="POST" style="color: white;">
+
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        
+                        <label id="form_name" for="username">Gebruikersnaam</label>
+                        <input type="text" placeholder="Voer je gebruikersnaam in" name="username" required>
+                    
+                    
+                        <label id="form_name" for="wachtwoord">wachtwoord</label>
+                        <input type="password" placeholder="Voer je wachtwoord in" name="passwd" required>
+                        
+                        <button type="submit" id="signupbutton">Meld je aan</button>
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+    </main>
+
+    <div id="consent-popup" class="hidden">
+        <button id="accept">Accepteren</button>
+        <p>Door gebruik te maken van deze website ga je akkoord met de <a href="{{url_for('terms')}}" target="_blank">terms and conditions</a> en cookies</p>  
+    </div>
+
+    <script src="{{ url_for('static', filename='popup.js')}}"></script>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

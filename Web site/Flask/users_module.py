@@ -11,12 +11,12 @@ def user_login(input_username, input_passwd):
         db = mysql.connect(
         host = "localhost",
         user = "login",
-        passwd = "*2Sasf@csAas3",
+        passwd = "2Sasf@csAas3",
         database = "psdb")
 
         #A prepared statement to get username, salt and hashed password from db.
         mycursor = db.cursor()
-        sql = "SELECT username, salt, password FROM user WHERE username = %s"
+        sql = "SELECT username, salt, password FROM admin WHERE username = %s"
         sql_param = input_username
         mycursor.execute(sql, sql_param)
         result = mycursor.fetchone()
@@ -30,8 +30,8 @@ def user_login(input_username, input_passwd):
         input_username = input_username[0]
         
         #Hash the password entered by user.
-        input_passwd = input_passwd + salt
-        input_passwd = hashlib.sha256(input_passwd.encode('utf-8')).hexdigest()
+        #input_passwd = input_passwd + salt
+        #input_passwd = hashlib.sha256(input_passwd.encode('utf-8')).hexdigest()
 
         mycursor.close()
         db.close()
