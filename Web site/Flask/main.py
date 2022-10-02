@@ -1,4 +1,4 @@
-#These modules will need to be imported, the modules starting with a dot are local modules. #hoi #hoitest2
+#These modules will need to be imported, the modules starting with a dot are local modules. #laatstetestwollah
 import time
 from flask import Flask, url_for, request, redirect, render_template, session, flash
 import mysql.connector as mysql
