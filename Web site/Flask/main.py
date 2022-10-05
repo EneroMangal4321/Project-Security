@@ -1,15 +1,21 @@
 #These modules will need to be imported, the modules starting with a dot are local modules.
+import imp
 import time
 from flask import Flask, url_for, request, redirect, render_template, session, flash
+from flask_wtf import FlaskForm, RecaptchaField
 import mysql.connector as mysql
 import secrets
+import os
 from users_module import *
 #from audit_module import *
 
 app = Flask(__name__)
-
 #Keeps client-side sessions secure
 app.secret_key = secrets.token_bytes(16)
+
+#recaptcha keys
+RECAPTCHA_PUBLIC_KEY = os.environ.get('6LcjBUgiAAAAABD2jof2yYBDNYNB1xGaslw0Q6iR')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('6LcjBUgiAAAAAKEpu9Qyut40w4wLdhgcvMyh_rpc')
 
 #If users enter 'https://localhost:443' they wil be rerouted to the right url, based on a session cookie.
 @app.route("/")
@@ -32,7 +38,6 @@ def aanmelden():
             username = request.form["gebruikersnaam"]
             password = request.form["wachtwoord"]
             password_repeat = request.form["wachtwoord-herhaling"]
-
             #if passwords match continue with data insertion.
             if password == password_repeat:
                 status = sign_user_up(username, password)
@@ -72,9 +77,7 @@ def login():
             input_username = request.form["username"]
             input_username = [input_username]
             input_passwd = request.form["passwd"]
-
             status = user_login(input_username, input_passwd)
-
             # User logged in
             if status == 0:
                 session['username'] = input_username[0]

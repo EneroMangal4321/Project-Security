@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for ('static', filename='dark_theme.css')}}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Login</title>
 </head>
 <body class="body">
@@ -40,11 +41,15 @@
                         <label id="form_name" for="username">Gebruikersnaam</label>
                         <input type="text" placeholder="Voer je gebruikersnaam in" name="username" required>
                     
-                    
                         <label id="form_name" for="wachtwoord">wachtwoord</label>
                         <input type="password" placeholder="Voer je wachtwoord in" name="passwd" required>
                         
+
                         <button type="submit" id="signupbutton">Meld je aan</button>
+                        <form action="?" method="POST">
+                            <div class="g-recaptcha" data-sitekey="6LcjBUgiAAAAABD2jof2yYBDNYNB1xGaslw0Q6iR"></div>
+                            <br/>
+                            <input type="submit" value="Submit">
                     </form>
                 </div>
             </div>
