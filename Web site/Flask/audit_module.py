@@ -2,16 +2,16 @@ import os
 import time
 
 #This function appends to the audit file. It takes the username and the action to create 
-# a formatted audit log. It will log the following: account creation, account deletion, 
-#   failed log in attempts, if a flag is captured and updates to the containers that are running.
+# a formatted audit log. It will log the following: account creation, 
+#   failed log in attempts.
 def audit(username, action):
     #List with actions (the index of each action equals the number):
     action_list =  ["Account created", "Account creation failed", "User logged in", 
-                    "Failed login attempt", "Started a CTF", "Failed to start CTF",
-                     "Captured a flag", "Stopped all CTFs running", "Account deleted"]
+                    "Failed login attempt"]
 
-    #This is the location of the audit file
-    audit_file = r'/var/www/ctf/audit.log'
+    #This is the location of the audit file. 
+    #On your locale system must change in your locale folder adress.
+    audit_file = r'/Users/hadi/Desktop/Blok05/01- Project Security/Group PS - github/Project-Security/Web site/Flask/audit.log'
 
     os.path.isfile(audit_file)
 
