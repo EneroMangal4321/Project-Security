@@ -7,7 +7,7 @@ import mysql.connector as mysql
 import secrets
 import os
 from users_module import *
-#from audit_module import *
+from audit_module import *
 
 app = Flask(__name__)
 #Keeps client-side sessions secure
@@ -45,18 +45,18 @@ def aanmelden():
                 #User was succesfully added. 
                 if status == 0:
                     flash("Gebruiker gemaakt, log nu in")
-                    #audit(username, 0)
+                    audit(username, 0)
                     return redirect(url_for("login"))
                 #Username was taken.    
                 elif status == 1:
                     flash("gebruikersnaam niet beschikbaar")
-                    #audit(username, 1)
+                    audit(username, 1)
                     return render_template('signup.html')
 
             #if passwords don't match let user try again.
             else:
                 flash("De wachtwoorden komen niet overeen, probeer het opnieuw")
-                #audit(username, 1)
+                audit(username, 1)
                 return render_template('signup.html')
                 
         else:
@@ -81,17 +81,17 @@ def login():
             # User logged in
             if status == 0:
                 session['username'] = input_username[0]
-                #audit(input_username[0], 2)
+                audit(input_username[0], 2)
                 return redirect(url_for("portal"))
 
             # Unsuccesfull log in attempts  
             elif status == 1:
                 flash("gebruikersnaam en/of wachtwoord incorrect")
-                #audit(input_username[0], 3)
+                audit(input_username[0], 3)
                 return render_template("login.html")
             elif status == 2:
                 flash("gebruikersnaam en/of wachtwoord incorrect")
-                #audit(input_username[0], 3)
+                audit(input_username[0], 3)
                 return render_template("login.html")
 
         #display page if not a post request
