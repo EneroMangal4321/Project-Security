@@ -11,7 +11,7 @@ def audit(username, action):
 
     #This is the location of the audit file. 
     #On your locale system must change in your locale folder adress.
-    audit_file = r'/Users/hadi/Desktop/Blok05/01- Project Security/Group PS - github/Project-Security/Web site/Flask/audit.log'
+    audit_file = r'C:\Users\raman\Documents\Project_Security_groep\Project-Security\Web site\Flask\audit.log'
 
     os.path.isfile(audit_file)
 
