@@ -64,10 +64,13 @@
     
 }
 
-#signupbutton{
+
+#btnSubmit{
     justify-content: center;
     align-items: center;
     padding: 5px;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
     
 
     background: #1B1B1E;
@@ -88,6 +91,10 @@
     border-style: none;
     
     color: #FFFFFF;
+}
+
+.g-recaptcha{
+    margin-top: 1em;
 }
 
 #form_name{
