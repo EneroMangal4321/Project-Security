@@ -18,10 +18,13 @@ USE `psdb` ;
 -- Table `psdb`.`admin`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `psdb`.`admin` (
-  `username` VARCHAR(45) NOT NULL,
+  `id` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(250) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `verificatie` VARCHAR(45) NOT NULL,
   `salt` VARCHAR(45) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`username`))
+  PRIMARY KEY (`id`, `username`, `email`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
@@ -30,7 +33,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `psdb`;
-INSERT INTO `psdb`.`admin` (`username`, `salt`, `password`) VALUES ('bob', 'a', '44343534306a48e839974d4ecdfbb2ecfc0157c92665bdd6c1c48ab2ad5f8ad0');
+INSERT INTO `psdb`.`admin` (`id`, `username`, `email`, `verificatie`, `salt`, `password`) VALUES ('1', 'bob','enero.mangal@gmail.com', '12345', 'a', 'Admin');
 
 COMMIT;
 
