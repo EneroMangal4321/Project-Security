@@ -1,12 +1,11 @@
 from flask import Flask, url_for, request, render_template, redirect
-from flask_mail import Mail, Message
 import smtplib
 from email.message import EmailMessage
 from email.utils import formataddr
 import random
+import mysql.connector as mysql
 
 app = Flask(__name__)
-mail = Mail(app)
 
 PORT = 587
 EMAIL_SERVER = "smtp-mail.outlook.com"
@@ -17,16 +16,46 @@ password_email = "Verify.Sec"
 @app.route("/", methods=["POST", "GET"])
 def main():
     if request.method == "POST":
-        try:
-            reciever = request.form["email"]
-            # name = request.form["name"]
-            rando_nr = send_email(reciever)
-            print(reciever)
-            print(rando_nr)
-            return redirect(url_for("verify", rando_nr))
+        # try:
+        reciever = request.form["email"]
+        rando_nr = send_email(reciever)
 
-        except:
-            return render_template("index.html")
+        #Establish DB connection with flag user
+        db = mysql.connect(
+        host = "database",
+        # host = "localhost",
+        user = "flag",
+        passwd = "8iAnDu#@a4%ac",
+        database = "paddb")
+
+        #code die id en email uit db haalt door middel van gebruikersnaam
+        mycursor = db.cursor()
+        sql = f"SELECT id, email from Users WHERE user_username = %s;"
+        sql_param = [username]
+        mycursor.execute(sql, sql_param)
+        result = mycursor.fetchall()
+        
+        #code die verificatie email stuurt naar email
+        rando_nr = send_email(reciever)
+
+
+        #code die verificatiecode in db zet
+        mycursor = db.cursor()
+        sql = f"UPDATE Users SET code = %s WHERE id = %s;"
+        sql_param = [rando_nr, id]
+        mycursor.execute(sql, sql_param)
+        result = mycursor.fetchall()
+
+        #code die opgegeven code vergelijkt met code uit db
+        mycursor = db.cursor()
+        sql = f"SELECT code from Users WHERE id = %s;"
+        sql_param = [id]
+        mycursor.execute(sql, sql_param)
+        result = mycursor.fetchall()
+
+        # except:
+        #     print("redirect gaat fout")
+        #     return render_template("index.html")
 
     return render_template("index.html")
 
@@ -34,11 +63,15 @@ def main():
 def verify(rando_nr):
 
     try:
-        if request.method == "POST":
+        print("OK1")
+        if request.method == "GET":
+            print("OK2")
             verify_input = request.form["verify_code"]
+            print("OK2.1")
             verify_input = int(verify_input)
-
+            print("OK3")
             if rando_nr == verify_input:
+                print("OK4")
                 return redirect(url_for("welcome"))
 
     except:
