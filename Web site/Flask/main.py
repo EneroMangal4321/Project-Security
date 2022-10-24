@@ -82,7 +82,7 @@ def login():
             if status == 0:
                 session['username'] = input_username[0]
                 #audit(input_username[0], 2)
-                return redirect(url_for("portal"))
+                return redirect(url_for("verify"))
 
             # Unsuccesfull log in attempts  
             elif status == 1:
@@ -97,6 +97,19 @@ def login():
         #display page if not a post request
         else:
             return render_template("login.html")
+
+@app.route("/verify", methods=["POST", "GET"])
+def validate_verify():
+    if request.method == "POST":
+        input_code = request.form["verify_code"]
+        input_code = int(input_code)
+        status = check_verify(input_code)
+
+        if status == 0:
+            return redirect(url_for("portal"))
+        else:
+            return render_template("verify.html")
+    return render_template("verify.html")
 
 
 #This route lets user sign out. It does not do anything special, but just pops the username from the session.    

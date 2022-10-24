@@ -1,6 +1,17 @@
+from flask import Flask, url_for, request, render_template, redirect
 import mysql.connector as mysql
 import secrets
 import hashlib
+import smtplib
+from email.message import EmailMessage
+from email.utils import formataddr
+import random
+
+PORT = 587
+EMAIL_SERVER = "smtp-mail.outlook.com"
+
+sender_email = "verify.sec.2022@outlook.com"
+password_email = "Verify.Sec"
 
 #A function that checks users creds. It takes a username and a password, and will return a status.
 # status = 0 means password and username match, status = 1 means username and/or password do not 
@@ -51,3 +62,31 @@ def user_login(input_username, input_passwd):
 
             status = 2
             return status 
+
+def check_verify(input_code):
+    try: 
+        db = mysql.connect(
+        host = "localhost",
+        user = "login",
+        passwd = "2Sasf@csAas3",
+        database = "psdb")
+
+        mycursor = db.cursor()
+        sql = "SELECT verificatie FROM admin WHERE id = %s"
+        sql_param = 1
+        mycursor.execute(sql, sql_param)
+        result = mycursor.fetchone()
+
+        verify_code = result[0]
+        verify_code1 = result
+
+        print(verify_code)
+        print(verify_code1)
+
+        if input_code == verify_code:
+            status = 0
+            return status
+
+    except:
+        status = 1
+        return status
