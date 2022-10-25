@@ -1,9 +1,9 @@
 #These modules will need to be imported, the modules starting with a dot are local modules.
-import imp
-import time
 from flask import Flask, url_for, request, redirect, render_template, session, flash
 from flask_wtf import FlaskForm, RecaptchaField
 import mysql.connector as mysql
+import imp
+import time
 import secrets
 import os
 from users_module import *

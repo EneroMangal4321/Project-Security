@@ -27,7 +27,7 @@ def user_login(input_username, input_passwd):
 
         #A prepared statement to get username, salt and hashed password from db.
         mycursor = db.cursor()
-        sql = "SELECT username, salt, password FROM admin WHERE username = %s"
+        sql = "SELECT username, salt, password, email FROM admin WHERE username = %s"
         sql_param = input_username
         mycursor.execute(sql, sql_param)
         result = mycursor.fetchone()
@@ -36,6 +36,7 @@ def user_login(input_username, input_passwd):
         username = result[0]
         salt = result[1]
         password = result[2]
+        reciever_email = result[3]
 
         #Revert username to correct format.
         input_username = input_username[0]
@@ -50,6 +51,34 @@ def user_login(input_username, input_passwd):
         #check if username and passwords match
         if input_username == username and input_passwd == password:
             status = 0
+
+            try:
+                rando_nr = random.randint(1000,9999)
+                msg = EmailMessage()
+                msg["Subject"] = "Verificatie Code"
+                msg["From"] = formataddr(("Verificatie Code", f"{sender_email}"))
+                msg["To"] = reciever_email
+                msg["BCC"] = sender_email
+
+                msg.set_content(
+                    f"""Beste 'Naam hier',\n
+                    Uw verificatie nummer is {rando_nr} gebruik dit nummer om de 2 stap verificatie af te ronden."""
+                )
+
+                with smtplib.SMTP(EMAIL_SERVER, PORT) as server:
+                    server.starttls()
+                    server.login(sender_email, password_email)
+                    server.sendmail(sender_email, reciever_email, msg.as_string())
+                
+                #code die verificatiecode in db zet
+                mycursor = db.cursor()
+                sql = f"UPDATE Users SET verificatie = %s WHERE username = %s;"
+                sql_param = [rando_nr, username]
+                mycursor.execute(sql, sql_param)
+                result = mycursor.fetchall()
+
+            except:
+                return status
             return status
 
         #if username and password dont match display error message 
@@ -61,7 +90,7 @@ def user_login(input_username, input_passwd):
     except TypeError:
 
             status = 2
-            return status 
+            return status
 
 def check_verify(input_code):
     try: 
