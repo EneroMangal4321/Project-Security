@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `psdb`.`admin` (
   `id` VARCHAR(45) NOT NULL,
   `username` VARCHAR(250) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `verificatie` VARCHAR(45) NOT NULL,
+  `verificatie` VARCHAR(45),
   `salt` VARCHAR(45) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`, `username`, `email`))
