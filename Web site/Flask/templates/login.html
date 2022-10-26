@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="signup_form">
-                    <form class="signup_forms" method="POST" style="color: white;">
+                    <form class="signup_forms" method="POST" style="color: white;" onsubmit="return validateRecaptcha();">
 
                         {% with messages = get_flashed_messages() %}
                             {% if messages %}
@@ -39,17 +39,16 @@
                         {% endwith %}
                         
                         <label id="form_name" for="username">Gebruikersnaam</label>
-                        <input type="text" placeholder="Voer je gebruikersnaam in" name="username" required>
+                        <input type="text" placeholder="Voer je gebruikersnaam in" name="username"data-rule-recaptcha="true" required>
                     
                         <label id="form_name" for="wachtwoord">wachtwoord</label>
-                        <input type="password" placeholder="Voer je wachtwoord in" name="passwd" required>
-                        
+                        <input type="password" placeholder="Voer je wachtwoord in" name="passwd" data-rule-recaptcha="true" required>
 
-                        <button type="submit" id="signupbutton">Meld je aan</button>
-                        <form action="?" method="POST">
-                            <div class="g-recaptcha" data-sitekey="6LcjBUgiAAAAABD2jof2yYBDNYNB1xGaslw0Q6iR"></div>
-                            <br/>
-                            <input type="submit" value="Submit">
+                        <div class="g-recaptcha"
+                                data-sitekey="6LcjBUgiAAAAABD2jof2yYBDNYNB1xGaslw0Q6iR"
+                                data-theme="dark"
+                                data-callback="recaptchaCallback"></div>
+                            <button type="submit" class="btn btn-default hidden" id="btnSubmit">Submit</button>
                     </form>
                 </div>
             </div>
@@ -63,7 +62,34 @@
     </div>
 
     <script src="{{ url_for('static', filename='popup.js')}}"></script>
+    <script src="jquery.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    
+    <!-- This function makes the login button dissappear, to hint the user to fill in the recaptcha form first -->
+    <script>
+        function recaptchaCallback() {
+            var btnSubmit = document.getElementById("btnSubmit");
+    
+            if ( btnSubmit.classList.contains("hidden") ) {
+                btnSubmit.classList.remove("hidden");
+                btnSubmitclassList.add("show");
+            }
+        }
+    </script>
 
+    <!-- This function makes sure that the user has checked the Recaptcha box. If the user didn't, it will show a popup that
+    tells the user to check the Recaptcha-box to sign in. -->
+    <script>
+        function validateRecaptcha() {
+            var response = grecaptcha.getResponse();
+            if (response.length == 0) {
+                alert("Vul de Recaptcha in om in te kunnen loggen.");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
     <footer>
 
     </footer>
