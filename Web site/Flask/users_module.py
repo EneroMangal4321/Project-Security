@@ -31,6 +31,7 @@ def user_login(input_username, input_passwd):
         sql_param = input_username
         mycursor.execute(sql, sql_param)
         result = mycursor.fetchone()
+        mycursor.close()
 
         #Assign correct vars to sql result.
         username = result[0]
@@ -45,8 +46,7 @@ def user_login(input_username, input_passwd):
         #input_passwd = input_passwd + salt
         #input_passwd = hashlib.sha256(input_passwd.encode('utf-8')).hexdigest()
 
-        mycursor.close()
-        db.close()
+        
 
         #check if username and passwords match
         if input_username == username and input_passwd == password:
@@ -61,7 +61,7 @@ def user_login(input_username, input_passwd):
                 msg["BCC"] = sender_email
 
                 msg.set_content(
-                    f"""Beste 'Naam hier',\n
+                    f"""Beste {username},\n
                     Uw verificatie nummer is {rando_nr} gebruik dit nummer om de 2 stap verificatie af te ronden."""
                 )
 
@@ -70,12 +70,15 @@ def user_login(input_username, input_passwd):
                     server.login(sender_email, password_email)
                     server.sendmail(sender_email, reciever_email, msg.as_string())
                 
-                #code die verificatiecode in db zet
+                # code die verificatiecode in db zet
                 mycursor = db.cursor()
-                sql = f"UPDATE Users SET verificatie = %s WHERE username = %s;"
+                sql = "UPDATE admin SET verificatie = (%s) WHERE username = (%s)"
                 sql_param = [rando_nr, username]
-                mycursor.execute(sql, sql_param)
-                result = mycursor.fetchall()
+                mycursor.execute(sql,sql_param)
+                db.commit()
+                # result = mycursor.fetchall()
+                mycursor.close()
+                db.close()
 
             except:
                 return status
@@ -101,16 +104,14 @@ def check_verify(input_code):
         database = "psdb")
 
         mycursor = db.cursor()
-        sql = "SELECT verificatie FROM admin WHERE id = %s"
-        sql_param = 1
+        sql = "SELECT verificatie FROM admin WHERE id = (%s)"
+        sql_param = [1]
         mycursor.execute(sql, sql_param)
         result = mycursor.fetchone()
 
         verify_code = result[0]
-        verify_code1 = result
+        verify_code = int(verify_code)
 
-        print(verify_code)
-        print(verify_code1)
 
         if input_code == verify_code:
             status = 0

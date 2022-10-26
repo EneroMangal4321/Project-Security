@@ -82,7 +82,7 @@ def login():
             if status == 0:
                 session['username'] = input_username[0]
                 #audit(input_username[0], 2)
-                return redirect(url_for("verify"))
+                return redirect(url_for("validate_verify"))
 
             # Unsuccesfull log in attempts  
             elif status == 1:
@@ -107,6 +107,7 @@ def validate_verify():
 
         if status == 0:
             return redirect(url_for("portal"))
+
         else:
             return render_template("verify.html")
     return render_template("verify.html")
