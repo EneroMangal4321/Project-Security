@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `psdb`
+-- Database: `banned_db`
 --
-CREATE DATABASE IF NOT EXISTS `psdb`;
-use `psdb`;
+CREATE DATABASE IF NOT EXISTS `banned_db`;
+use `banned_db`;
 -- --------------------------------------------------------
 
 --

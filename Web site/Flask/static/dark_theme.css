@@ -3,448 +3,11 @@
 /* General site wide CSS */
 
 .body{
-    background-color: #676767;
+    background-color: #c7bb9b;
     padding: 0%;
     margin: 0%;
 } 
 
-/* CSS for navbar */
-.navbar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #35363A;
-    height: 120px;
-
-}
-
-#logo{
-   width: 320px; 
-   height: auto;
-
-   padding-left: 25px;
-
-}
-.buttons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 25px;
-    padding-right: 25px;
-    
-    
-}
-#navbar_button{
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    
-
-    background: #1B1B1E;
-    border-radius: 50px;
-    width: 121px;
-    height: 40px;
-
-    
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.2px;
-    
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-#challenge_button{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 25px;
-    padding-right: 25px;
-    
-
-}
-
-#profile_picture{
-    width: 69px;
-    height: 69px;
-}
-
-
-/* CSS for hints */
-
-.hint{
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-}
-
-.Hint_page{
-    text-align: center;
-    color: white;
-    width: 60%;
-
-    font-family: Consolas;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 20px;
-}
-
-
-#hint_header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #1B1B1E;
-
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 20px;
-
-    text-align: center;
-    letter-spacing: 0.2px;
-    color:#FFFFFF;
-
-    height: 65px;
-}
-
-
-#challenges_hint {
-    background-color: #1B1B1E;
-    border-bottom: 1px #ccc solid;
-
-}
-
-
-
-.collapsible_hint {
-    background-color: #35363A;
-    cursor: pointer;
-    border-left: none;
-    border-right: none;
-    border-top: solid 1px gray;
-    border-bottom:none;
-    outline: none;
-    margin: 0%;
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: Consolas;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 20px;
-    color: white;
-
-    text-align: left;
-    width: 100%
-    
-}
-
-.active, .collapsible_hint:hover {
-    background-color: #1B1B1E;
-
-}
-
-.content_hint {
-
-    padding: 0 20px;
-    margin-bottom: 0px;
-    background-color: #35363A;
-    color: #FFFFFF;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
-/* CSS for flags inleveren */
-.flag_page{
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-}
-
-.chal_head{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #1B1B1E;
-
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 20px;
-
-    text-align: center;
-    letter-spacing: 0.2px;
-    color:#FFFFFF;
-
-    height: 65px;
-}
-  
-.challenges_flag {
-    text-align: center;
-    color: white;
-    width: 60%;
-    background-color: #35363A;
-    font-family: Consolas;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 20px;
-
-}
-
-/* .collapsible_flag {
-    background-color: #35363A;
-
-    cursor: pointer;
-    border-left: none;
-    border-right: none;
-    border-top: solid 1px gray;
-    border-bottom:none;
-    outline: none;
-    margin: 0%;
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: Consolas;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 20px;
-    color: white;
-
-    text-align: left;
-    width: 100%
-} */
-
-/* .active, .collapsible_flag:hover {
-    background-color: #1B1B1E;
-} */
-
-.content_flag{
-    padding: 0 20px;
-    margin-bottom: 0px;
-     background-color: pink; 
-    color: #FFFFFF;
-    max-height: 0;
-    /* overflow: hidden; */
-    transition: max-height 0.2s ease-out;
-  
-}
-
-#flag_inlever{
-    padding-top: 1%;
-    padding-bottom: 1%;
-    
-
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
-
-    
-    letter-spacing: 0.2px;
-    
-    color: #FFFFFF;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-#flag_Check{
-    background: #1B1B1E;
-    border-radius: 20px;
-    width: 70px;
-    height: 20px;
-
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 21px;
-    letter-spacing: 0.2px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-
-    border-style: none;
-    
-    color: #FFFFFF;
-}
-
-/* CSS for challenges */
-
-.container_chal {
-    display: flex;
-    justify-content: center;
-    padding-top: 5%;
-    
-}
-
-.challenges_chal{
-    width: 60%;
-
-}
-
-.item-header_chal{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #1B1B1E;
-
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 20px;
-
-    text-align: center;
-    letter-spacing: 0.2px;
-    color:#FFFFFF;
-
-    height: 65px;
-    
-}
-
-.collapsible_chal {
-    background-color: #35363A;
-    cursor: pointer;
-    border-left: none;
-    border-right: none;
-    border-top: solid 1px gray;
-    border-bottom:none;
-    outline: none;
-    margin: 0%;
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: Consolas;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 20px;
-    color: white;
-
-    text-align: left;
-    width: 100%
-}
-
-.active, .collapsible_chal:hover {
-    background-color: #1B1B1E;
-}
-
-.content_chal {
-    padding: 0 20px;
-    margin-bottom: 0px;
-    background-color: #35363A;
-    color: #FFFFFF;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
-#challenge{
-    display: flex;
-    justify-content: space-between;
-    background-color: #35363A;
-    
-}
-
-#beschrijving_chal{
-    padding-top: 1%;
-    padding-bottom: 1%;
-    height: 100px;
-
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
-    display: flex;
-    
-    letter-spacing: 0.2px;
-    
-    color: #FFFFFF;
-
-}
-
-.knoppen{
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 12.5px;
-    padding: 2px;
-    padding-bottom: 20px;
-}
-
-
-
-#choice-buttons{
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    
-
-    background-color: #1B1B1E;
-    border-radius: 25px;
-    width: 60.5px;
-    height: 20px;
-
-    
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.2px;
-    
-    color: #FFFFFF;
-    text-decoration: none;
-
-}
-
-#choice-buttons2{
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    
-
-    background-color: #1B1B1E;
-    border-radius: 25px;
-    width: 120px;
-    height: 30px;
-
-    
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.2px;
-    
-    color: #FFFFFF;
-    text-decoration: none;
-
-}
 
 /* CSS for signup and login */
 
@@ -494,7 +57,7 @@
     align-items: center;
 
     padding-top: 5%;
-    background-color: #35363A;
+    background-color: #8aa17f;
     height: 150%;
     width: 500px;
     padding-bottom: 5%;
@@ -594,83 +157,59 @@
     background-color: white;
     color: black;
 }
-    
-
-/* css for profile page */
 
 
-.profile_container {
-    justify-content: center;
-    display: flex;
-    padding-top: 5%;
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
+    height: 100px;
+    width: 180px;
+    background-color: #34384b;
+    border-radius: 50px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+}
+input[type="checkbox"]:before{
+    content: "";
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    background-color: #d5d5d5;
+    border-radius: 50%;
+    left: 10px;
+    top: 10px;
+
 }
 
-.profile_box {
-    width: 60%;
+input[type="checkbox"]:after{
+    content: "OFF";
+    position: absolute;
+    font-family: 'Poppins',sans-serif;
+    color: #d5d5d5;
+    font-size: 95px;
+    left: 190px;
+    bottom: -25px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+
 }
 
-
-.profile_title{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #1B1B1E;
-
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 20px;
-
-    text-align: center;
-    letter-spacing: 0.2px;
-    color:#FFFFFF;
-
-    height: 65px;
-    
+input[type="checkbox"]:checked{
+    background-color: #19d28f;
+}
+input[type="checkbox"]:checked:before{
+    background-color: #1f212d;
+    left: 90px;
 }
 
-.profile_content {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #35363A;
-    color: #FFFFFF;
-    margin-top: 2px; 
-    
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.2px;
-
-    text-align: center;
-}
-
-.profile_button {
-    margin-top: 50px;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    
-
-    background-color: #1B1B1E;
-    border-radius: 25px;
-    width: 150px;
-    height: 40px;
-
-    
-    font-family: Consolas;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.2px;
-    
-    color: #FFFFFF;
-    text-decoration: none;
+input[type="checkbox"]:checked:after{
+    content: "ON";
+    color: #19d28f;
 }
