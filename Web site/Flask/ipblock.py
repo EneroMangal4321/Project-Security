@@ -14,7 +14,7 @@ import mysql.connector
 app = Flask(__name__)
 
 # Connect to database
-banneddb = mysql.connector.connect(host="127.0.0.1", port="3306", user="root", password="root", database="banned_db")
+banneddb = mysql.connector.connect(host="localhost", port="3306", user="login", password="2Sasf@csAas3", database="banned_db")
 
 bannedcursor = banneddb.cursor(buffered=True)
 
